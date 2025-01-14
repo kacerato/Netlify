@@ -1,0 +1,964 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #18181b;
+    color: #f4f4f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 16px; /* Update: Added font-size */
+    line-height: 1.6; /* Update: Added line-height */
+}
+
+.container { /* Update: Added container class */
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+header {
+    background-color: #27074F;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    color: white;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.twitch-logo {
+    height: 40px;
+    width: auto;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding: 40px 0; /* Update: Modified padding */
+    gap: 20px;
+}
+
+/* Status ao vivo */
+
+#live-status {
+    align-items: center;
+    gap: 10px;
+    background-color: #292b2f;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    justify-content: center;
+}
+
+.live-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.live-light {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+#status-message {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #f4f4f5;
+}
+
+/* Chat em tempo real */
+#chat-container {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#chat-container iframe {
+    width: 100%;
+    height: 500px;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    #live-status {
+        padding: 10px 15px;
+    }
+
+    .live-text {
+        font-size: 1.2rem;
+    }
+
+    .live-light {
+        height: 15px;
+        width: 15px;
+    }
+
+    #chat-container iframe {
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    #live-status {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .live-text {
+        font-size: 1rem;
+    }
+
+    .live-light {
+        height: 12px;
+        width: 12px;
+    }
+
+    #chat-container iframe {
+        height: 300px;
+    }
+}
+
+/* Outros estilos existentes */
+.status-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #292b2f;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.status-container p {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.days-counter {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #9146ff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000; /* Para garantir que o rodapé esteja acima de outros elementos */
+}
+
+/* Estilo do menu de navegação */
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+nav button {
+    background-color: #9146ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+nav button:hover {
+    background-color: #772ce8;
+}
+
+nav button.active {
+    background-color: #5a14b2;
+}
+
+/* Esconde as abas inativas */
+.tab-content.hidden {
+    display: none;
+}
+
+/* Estilo dos clipes */
+#clips-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.clip {
+    background-color: #292b2f;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.clip iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+}
+
+.clip-title {
+    font-size: 1rem;
+    color: #f4f4f5;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Container das últimas lives */
+#vods-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.vod {
+    background-color: #292b2f;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.vod-preview {
+    background-color: #292b2f;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.vod iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+}
+
+.vod-title {
+    font-size: 1rem;
+    color: #f4f4f5;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.vod-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Estilo para destacar a frase */
+.status-highlight {
+    background-color: #9146ff;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: bounce 1.5s infinite;
+}
+
+/* Seta animada apontando para o botão */
+/* Seta SVG personalizada */
+.animated-arrow {
+    text-align: center;
+    margin-top: 10px;
+    animation: bounce 1.5s infinite;
+}
+
+.custom-arrow {
+    height: 50px;
+    width: 50px;
+    fill: #9146ff;
+}
+
+/* Animação de pulo para a seta */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* Estilo geral para o embed */
+.twitch-embed {
+    background-color: #9146ff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.twitch-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.twitch-link:hover {
+    text-decoration: underline;
+}
+
+.twitch-logo {
+    height: 40px;
+    width: auto;
+}
+
+.counter-animation {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    animation: bounce 2s infinite;
+}
+
+#player-main {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#player-main iframe {
+    width: 100%;
+    height: 500px; /* Update: Modified iframe height */
+    border: none;
+}
+
+#viewers-counter {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #f4f4f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#viewers-count {
+    font-weight: bold;
+    color: #9146ff;
+    margin-right: 5px;
+    animation: pulse 1s infinite;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+#main-playerclips {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.clip-preview {
+    background-color: #292b2f;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.clip-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.select-clip-btn, .select-vod-btn {
+    background-color: #9146ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.select-clip-btn:hover, .select-vod-btn:hover {
+    background-color: #772ce8;
+}
+
+.hidden {
+    display: none;
+}
+
+#achievements-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.achievement {
+  background-color: #27074F;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+}
+
+.achievement-icon {
+  width: 35px;
+  height: 35px;
+  animation: swingStar 2s ease-in-out infinite;
+}
+
+.brkk-head {
+  width: 50px;
+  height: 50px;
+  animation: fadeInOut 8s ease-in-out infinite, swingHead 4s ease-in-out infinite;
+}
+
+.star-3-days {
+  fill: #FFD700;
+}
+
+.star-5-days {
+  fill: #C0C0C0;
+}
+
+.star-10-days {
+  fill: #CD7F32;
+}
+
+.star-15-days {
+  fill: #E5E4E2;
+}
+
+.achievement-text {
+  margin: 0;
+  flex-grow: 1;
+}
+
+@keyframes swingStar {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  75% { transform: rotate(-15deg); }
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes swingHead {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .achievement {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .achievement-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brkk-head {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievement {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .achievement-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .brkk-head {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Responsividade - existing media queries remain unchanged */
+@media (max-width: 768px) {
+  .status-container {
+    padding: 20px;
+  }
+
+  .days-counter {
+    font-size: 3rem;
+  }
+
+  .achievement {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .achievement-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .brkk-head {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .status-container {
+    padding: 15px;
+  }
+
+  .days-counter {
+    font-size: 2.5rem;
+  }
+
+  .achievement {
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  .achievement-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .brkk-head {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Update: Modified font-size for 768px */
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .container { /* Update: Added media query for container */
+    padding: 0 10px;
+  }
+
+  main { /* Update: Added media query for main */
+    padding: 20px 0;
+  }
+
+  #main-player iframe,
+  #main-playerclips iframe { /* Update: Added media query for iframes */
+    height: 300px;
+  }
+
+  .vod, .clip { /* Update: Added media query for vod and clip width */
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 10px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .vod, .clip { /* Update: Added media query for vod and clip width */
+    width: 100%;
+  }
+
+  .time-selection { /* Update: Added media query for time-selection */
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 1200px) { /* Update: Added media query for larger screens */
+  body {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 1400px;
+  }
+
+  #main-player iframe,
+  #main-playerclips iframe {
+    height: 600px;
+  }
+
+  .vod, .clip {
+    width: calc(33.333% - 20px);
+  }
+}
+
+
+/* Melhorando a interface de seleção de tempo */
+/* Estilo melhorado para a seleção de tempo */
+/* Reset básico e estilos já existentes... */
+
+.vod-download-interface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.time-selection {
+  display: flex;
+  gap: 20px;
+  background: #292b2f;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.time-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-input {
+  width: 150px;
+  padding: 10px;
+  background: #333;
+  border: 1px solid #9146ff;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+label {
+  color: #f4f4f5;
+  margin-bottom: 5px;
+}
+
+.download-btn {
+  margin-top: 15px;
+  background-color: #9146ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-btn:hover {
+  background-color: #772ce8;
+  transform: translateY(-2px);
+}
+
+.download-btn::before {
+  content: '📥';
+  margin-right: 5px;
+}
+
+/* Adicionar os seguintes estilos para o botão de seleção de VOD */
+.select-vod-download-btn {
+  background-color: #9146ff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 10px;
+}
+
+.select-vod-downlaod-btn:hover {
+  background-color: #772ce8;
+  transform: translateY(-2px);
+}
+
+.select-vod-download-btn:active {
+  transform: translateY(0);
+}
+
+.vod.active .select-vod-download-btn {
+  background-color: #5c16c5;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #9146ff;
+}
+
+#download-status {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+/* Estilos para a barra de download */
+.progress-bar { /* Update: Added progress bar styles */
+  width: 100%;
+  height: 20px;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.progress-bar-fill { /* Update: Added progress bar fill styles */
+  height: 100%;
+  background-color: #9146ff;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Adicione os seguintes estilos após o seletor .vod-download-interface */
+.time-selection {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(145deg, #2a2a2a, #333333);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.time-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.time-input {
+  width: 150px;
+  padding: 12px;
+  background: #1e1e1e;
+  border: 2px solid #9146ff;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.time-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(145, 70, 255, 0.3);
+}
+
+label {
+  color: #f4f4f5;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.select-vod-download-btn, .download-btn {
+  background-color: #9146ff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 15px;
+}
+
+.select-vod-download-btn:hover, .download-btn:hover {
+  background-color: #7a3dd6;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(145, 70, 255, 0.3);
+}
+
+.select-vod-download-btn:active, .download-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(145, 70, 255, 0.2);
+}
+
+.select-vod-download-btn::before, .download-btn::before {
+  content: '🎬';
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.download-btn::before {
+  content: '📥';
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(145, 70, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(145, 70, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(145, 70, 255, 0);
+  }
+}
+
+.vod.active .select-vod-download-btn {
+  animation: pulse 1.5s infinite;
+}
+
+/* Adicione os seguintes estilos para melhorar a responsividade */
+@media (max-width: 768px) {
+  .time-selection {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .time-control {
+    width: 100%;
+    align-items: center;
+  }
+
+  .time-input {
+    width: 100%;
+  }
+
+  .select-vod-download-btn, .download-btn {
+    width: 100%;
+  }
+  }
+      
