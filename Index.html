@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRKK | Status e Clips</title>
+  <link rel="Stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="/img/twitch-ar21.svg" alt="Twitch Logo" class="brkk">
+      <h1>BRKK</h1>
+    </div>
+    <nav>
+      <button id="status-tab" class="active">Status</button>
+      <button id="clips-tab">Clipes Recentes</button>
+      <button id="vods-tab">Últimas Lives</button>
+    </nav>
+  </header>
+
+  <main>
+   <div id="status-section" class="tab-content">
+            <div id="live-status" class="hidden">
+                <span class="live-light"></span>
+                <span class="live-text">AO VIVO</span>
+            </div>
+            <div class="status-container">
+                <h2 id="status-message">O tucano está folgando com dinheiro do seu sub a exatos:</h2>
+                <div class="counter-animation">
+                    <div class="days-counter">
+                        <span id="days-offline">...</span> <span>Dias</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div id="achievements-container" class="hidden">
+                <div class="achievement">
+                    <img src="/img/star-icon.svg" alt="Achievement Star" class="achievement-icon">
+                    <img src="/img/brkkcabeca.png" alt="BRKK Cabeça" class="brkk-head hidden">
+                    <p class="achievement-text"></p>
+                </div>
+            </div>
+
+    <div id="clips-section" class="tab-content hidden">
+      <h2>Clipes Recentes</h2>
+      <div id="main-playerclips">
+        <!-- O player principal será adicionado aqui -->
+      </div>
+      <div id="clips-container">
+        <p>Carregando clipes...</p>
+      </div>
+    </div>
+
+<div id="vods-section" class="tab-content hidden">
+  <h2>Últimas Lives</h2>
+  <div id="main-player">
+    <iframe id="main-player-iframe" src="/placeholder.svg" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div id="vods-container">
+    <p>Carregando as últimas lives...</p>
+  </div>
+  <div id="vod-download-interface" class="vod-download-interface">
+  <div id="download-progress" class="progress-bar hidden">
+    <div class="progress-bar-fill"></div>
+  </div>
+    <div class="time-selection">
+      <div class="time-control">
+        <label for="start-time">Início:</label>
+        <input type="time" id="start-time" step="1" class="time-input" required>
+      </div>
+      <div class="time-control">
+        <label for="end-time">Fim:</label>
+        <input type="time" id="end-time" step="1" class="time-input" required>
+      </div>
+      <input type="hidden" id="selected-vod-id">
+<input type="hidden" id="selected-vod-url">
+      <button id="download-vod" class="download-btn">Baixar Trecho</button>
+    </div>
+  </div>
+  
+</div>
+    
+
+
+    <div class="live-status">
+      <div id="live-status" class="hidden">
+        <span class="live-light"></span>
+        <span class="live-text">AO VIVO</span>
+      </div>
+      <p id="status-message"></p>
+    </div>
+
+    <div class="animated-arrow hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" height="50px" width="50px" viewBox="0 0 512.001 512.001" class="custom-arrow">
+        <path style="fill:#9146ff;" d="M357.781,140.7c-9.061,0-16.407-7.345-16.407-16.407v-91.04c0-9.061,7.345-16.407,16.407-16.407s16.407,7.345,16.407,16.407v91.04C374.187,133.355,366.842,140.7,357.781,140.7z" />
+        <path style="fill:#CEE8FA;" d="M256.002,323.673l106.075-109.017h117.45c14.272,0,21.448,17.23,11.394,27.36l-234.92,236.731L21.08,242.016c-10.052-10.131-2.878-27.36,11.394-27.36h117.45L256.002,323.673z" />
+        <path style="fill:#9146ff;" d="M509.491,218.229c-5.055-12.136-16.817-19.98-29.965-19.98h-117.45c-4.43,0-8.669,1.79-11.759,4.965L256,300.146l-85.372-87.739V33.253c0-9.061-7.345-16.407-16.407-16.407s-16.407,7.345-16.407,16.407v164.997H32.475c-13.148,0-24.91,7.842-29.965,19.98c-5.055,12.138-2.338,26.011,6.924,35.345l234.922,236.731c3.08,3.104,7.273,4.85,11.645,4.85s8.566-1.746,11.645-4.85l234.922-236.731C511.829,244.24,514.547,230.367,509.491,218.229z M256.002,455.454L33.33,231.063h109.668l101.245,104.051c3.088,3.175,7.329,4.965,11.759,4.965s8.671-1.79,11.759-4.965l101.244-104.051l109.67,0.003L256.002,455.454z" />
+      </svg>
+    </div>
+
+    <div class="twitch-embed hidden">
+      <a href="https://www.twitch.tv/brkk" target="_blank" class="twitch-link">
+        <img src="/img/twitch-icon.svg" alt="Twitch Logo" class="twitch-logo">
+        <span>Twitch/BRKK</span>
+      </a>
+    </div>
+
+    <div id="chat-container">
+      <div id="viewers-counter" class="hidden">
+        <span id="viewers-count">0</span> <span>Viewers</span>
+      </div>
+      <iframe src="https://www.twitch.tv/embed/brkk/chat?parent=localhost&parent=brkk.netlify.app" frameborder="0" scrolling="no" height="500" width="100%">
+      </iframe>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Feito Por um hater do BRKK</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
+
+                  
