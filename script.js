@@ -1,6 +1,7 @@
 const clientId = "v2h2uedgpuw2fz35wtn942e9vsf2c9";
 const accessToken = "st6jpeqk6jidreb6cnlw08zn5fwjbk";
 const username = "brkk";
+const baseUrl = "vercel-topaz-sigma-27.vercel.app"; // Substitua pela URL do seu backend no Vercel
 
 const twitchUserApi = `https://api.twitch.tv/helix/users?login=${username}`;
 const twitchStreamApi = `https://api.twitch.tv/helix/streams?user_login=${username}`;
@@ -241,7 +242,7 @@ function updateProgressBar(vodId) {
   const progressBarFill = progressBar.querySelector('.progress-bar-fill');
 
   function checkProgress() {
-    fetch(`/api/downloadprogress/${vodId}`)
+    fetch(`${baseUrl}/api/downloadprogress/${vodId}`)
       .then(response => response.json())
       .then(data => {
         if (data.progress) {
@@ -294,7 +295,7 @@ async function downloadVod(vodId, startSeconds, endSeconds) {
     updateProgressBar(vodId);
 
     console.log('Enviando solicitação para o servidor...');
-    const response = await fetch('/api/downloadvod', {
+    const response = await fetch(`${baseUrl}/api/downloadvod`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -541,4 +542,3 @@ document.querySelectorAll('.select-vod-btn').forEach(button => {
 
 window.addEventListener("resize", adjustPlayerSize);
 
-                                 
